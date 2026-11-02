@@ -866,3 +866,28 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+/* ===== EXTRA ANIMATIONS (cursor, reveal, marquee, progress) ===== */
+@media (hover:hover) and (pointer:fine){body,a,button,input{cursor:none}}
+.cur-dot,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:200;border-radius:50%;will-change:transform}
+.cur-dot{width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--red)}
+.cur-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid var(--red);transition:width .25s,height .25s,margin .25s,background .25s}
+.cur-ring.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,59,59,.15)}
+.ghost-cur{position:fixed;left:0;top:0;z-index:150;pointer-events:none;will-change:transform}
+.ghost-cur svg{display:block;width:16px;height:16px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.ghost-cur b{display:block;margin:2px 0 0 12px;font:700 9px 'Plus Jakarta Sans';padding:2px 6px;border-radius:3px;color:#000;white-space:nowrap;width:max-content}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--red);z-index:60}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.hero-text>*{animation:up .9s both cubic-bezier(.2,.7,.2,1)}
+.big-bg{animation:slide 1.4s both cubic-bezier(.2,.7,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(40px)}}
+@keyframes slide{from{opacity:0;transform:translateX(-80px)}}
+.logos{overflow:hidden;flex-wrap:nowrap;gap:0}
+.logos .track{display:flex;align-items:center;width:max-content;animation:mq 22s linear infinite}
+.logos .track b{margin-right:46px;white-space:nowrap}
+.logos:hover .track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tl{--grow:0}
+.tl::after{content:'';position:absolute;left:-2px;top:0;width:2px;height:calc(var(--grow)*100%);background:#fff;box-shadow:0 0 12px var(--red)}
+.btn,.lets{transition:transform .2s,background .25s,color .25s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none}}
